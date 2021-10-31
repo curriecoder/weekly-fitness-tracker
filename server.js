@@ -1,11 +1,8 @@
 const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
-const path = require("path");
 
 const PORT = process.env.PORT || 3000;
-
-const db = require("./models");
 
 const app = express();
 
@@ -21,15 +18,8 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/populate", {
   useNewUrlParser: true,
 });
 
-// GET excercise
-app.get("/exercise", (req, res) => {
-  res.sendFile(path.join(__dirname + "/public/exercise.html"));
-});
-
-// GET stats
-app.get("/stats", (req, res) => {
-  res.sendFile(path.join(__dirname + "/public/stats.html"));
-});
+app.use(require("./routes/apiRoutes.js"));
+app.use(require("./routes/htmlRoutes.js"));
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
