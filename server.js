@@ -1,5 +1,4 @@
 const express = require("express");
-const router = require("express").Router();
 const logger = require("morgan");
 const mongoose = require("mongoose");
 const path = require("path");
@@ -33,7 +32,7 @@ app.get("/stats", (req, res) => {
 });
 
 // GET workouts
-router.get("/api/workouts", (req, res) => {
+app.get("/api/workouts", (req, res) => {
   db.Workout.find({})
     .then((dbWorkout) => {
       dbWorkout.forEach((workout) => {
@@ -51,7 +50,7 @@ router.get("/api/workouts", (req, res) => {
 });
 
 // PUT new exercise
-router.put("/api/workouts/:id", (req, res) => {
+app.put("/api/workouts/:id", (req, res) => {
   // locate workout with matching id
   db.Workout.findOneAndUpdate(
     { _id: req.params.id },
@@ -68,6 +67,31 @@ router.put("/api/workouts/:id", (req, res) => {
     .catch((err) => {
       res.json(err);
     });
+});
+
+// POST new workout
+app.post("/api/workouts", (req, res) => {
+  db.Workout.create(req.body)
+    .then((dbWorkout) => {
+      res.json(dbWorkout);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
+
+// get workouts in range
+app.get("/api/workouts/range", (req, res) => {
+
+    db.Workout.find({}).then(dbWorkout => {
+        console.log("ALL WORKOUTS");
+        console.log(dbWorkout);
+
+        res.json(dbWorkout);
+    }).catch(err => {
+        res.json(err);
+    });
+
 });
 
 app.listen(PORT, () => {
