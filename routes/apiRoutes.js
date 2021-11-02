@@ -3,7 +3,7 @@ const db = require("../models");
 
 // GET all workouts
 router.get("/api/workouts", (req, res) => {
-  db.Workout.find({});
+  // db.Workout.find({});
   db.Workout.aggregate([
     {
       $addFields: {

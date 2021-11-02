@@ -1,6 +1,6 @@
 # Weekly-fitness-tracker
 
-Deployed: COMING SOON
+Deployed: https://shielded-river-35622.herokuapp.com/?id=6181683dd612f954bd6d20a5
 
 Repo: https://github.com/curriecoder/weekly-fitness-tracker
 
