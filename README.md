@@ -23,8 +23,8 @@ To install this application, simply download the files and run `npm install` to 
 
 To use this application, select 'New Workout' and enter an exercise. Users may then choose to input additional exercises until their workout is complete. Once the workout is done, click 'Complete' to add it to the dashboard page.
     
-    ![alt text](assets/images/scrnshot1.png)
-    ![alt text](assets/images/scrnshot2.png)
+    ![screenshot1](assets/images/scrnshot1.png)
+    ![screenshot2](assets/images/scrnshot2.png)
     
 ## Credits
 
